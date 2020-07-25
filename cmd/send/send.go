@@ -39,6 +39,10 @@ func main() {
 	}
 
 	messageURL := queueURL.NewMessagesURL()
+	_, err = messageURL.Clear(ctx)
+	if err != nil {
+		log.Fatalf("Cannot clear the message: %v", err)
+	}
 	for i := 0; i < count; i++ {
 		props, err := queueURL.GetProperties(ctx)
 		if err != nil {

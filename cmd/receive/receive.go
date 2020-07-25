@@ -71,6 +71,10 @@ func main() {
 				if err != nil {
 					log.Fatal(err)
 				}
+				props, err = queueURL.GetProperties(ctx)
+				if err != nil {
+					log.Fatal(err)
+				}
 				fmt.Printf("7: Approximate number of messages in the queue=%d\n", props.ApproximateMessagesCount())
 				visibleCount, err = getVisibleCount(&messageURL, 32)
 				if err != nil {
